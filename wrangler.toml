@@ -1,0 +1,17 @@
+name = "cloud-remix"
+
+account_id = "a275d70ec37a6046e6778c77d65dd38b"
+workers_dev = true
+main = "./build/index.js"
+# https://developers.cloudflare.com/workers/platform/compatibility-dates
+compatibility_date = "2022-04-05"
+
+[site]
+bucket = "./public"
+
+[build]
+command = "yarn build"
+
+[[r2_buckets]]
+binding = 'MY_BUCKET' # <~ valid JavaScript variable name
+bucket_name = 'default-bucket'
