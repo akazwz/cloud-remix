@@ -3609,11 +3609,6 @@ esbuild-openbsd-64@0.14.22:
   resolved "https://registry.npmmirror.com/esbuild-openbsd-64/-/esbuild-openbsd-64-0.14.22.tgz#2a73bba04e16d8ef278fbe2be85248e12a2f2cc2"
   integrity sha512-vK912As725haT313ANZZZN+0EysEEQXWC/+YE4rQvOQzLuxAQc2tjbzlAFREx3C8+uMuZj/q7E5gyVB7TzpcTA==
 
-esbuild-plugin-alias@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.npmmirror.com/esbuild-plugin-alias/-/esbuild-plugin-alias-0.2.1.tgz#45a86cb941e20e7c2bc68a2bea53562172494fcb"
-  integrity sha512-jyfL/pwPqaFXyKnj8lP8iLk6Z0m099uXR45aSN8Av1XD4vhvQutxxPzgA2bTcAwQpa1zCXDcWOlhFgyP3GKqhQ==
-
 esbuild-sunos-64@0.14.22:
   version "0.14.22"
   resolved "https://registry.npmmirror.com/esbuild-sunos-64/-/esbuild-sunos-64-0.14.22.tgz#8fe03513b8b2e682a6d79d5e3ca5849651a3c1d8"
@@ -6014,11 +6009,6 @@ nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.npmmirror.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
-
-no-op@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmmirror.com/no-op/-/no-op-1.0.3.tgz#c1bd81323890658fe3aef6e495c3c103f5eec54d"
-  integrity sha512-W6FgaCckX1mS3zKe2wYo7rtOf5kCxiPdC6N0cxyIe6uzhc5wZIp3s9QlKuHpWNBbgVn27RgO+QfJOJmlMpE6aQ==
 
 node-addon-api@^1.7.1:
   version "1.7.2"

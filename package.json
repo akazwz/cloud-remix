@@ -30,10 +30,8 @@
     "@remix-run/eslint-config": "^1.6.5",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
-    "esbuild-plugin-alias": "^0.2.1",
     "eslint": "^8.20.0",
     "miniflare": "^2.6.0",
-    "no-op": "^1.0.3",
     "npm-run-all": "^4.1.5",
     "remix-esbuild-override": "^3.0.4",
     "typescript": "^4.7.4"
