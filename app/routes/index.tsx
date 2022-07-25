@@ -10,7 +10,6 @@ import {
 	Tooltip,
 	VStack,
 	Spacer,
-	Spinner,
 	IconButton,
 	useColorModeValue,
 	useToast,
@@ -95,7 +94,7 @@ const Index = () => {
 		<Box maxW="md" mx="auto" p={3}>
 			<ColorModeToggle />
 			<Heading textAlign="center">
-				Upload File
+				Remix Cloud
 			</Heading>
 			{/* 上传 box, 可以点击选择文件上传， 可以拖拽上传 */}
 			<Box
