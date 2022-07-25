@@ -8,6 +8,7 @@ export const loader: LoaderFunction = async({ params }) => {
 
 	const object = await MY_BUCKET.get(key)
 	if (!object) return new Response('Object Not Found')
+	console.log(object)
 
 	const headers = new Headers()
 	object.writeHttpMetadata(headers)
@@ -17,4 +18,6 @@ export const loader: LoaderFunction = async({ params }) => {
 		headers,
 	})
 }
+
+
 
