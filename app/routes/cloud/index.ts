@@ -22,7 +22,9 @@ export const action: ActionFunction = async({ request, params }) => {
 	switch (request.method) {
 		case 'PUT':
 			const object = await MY_BUCKET.put(key, data, {
-				httpMetadata: request.headers,
+				httpMetadata: {
+					contentType: request.headers.get('Content-Type') || undefined,
+				},
 			})
 			if (!object) {
 				return json(
