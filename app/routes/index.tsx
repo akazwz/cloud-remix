@@ -77,7 +77,7 @@ const Index = () => {
 			await file.arrayBuffer(),
 			{
 				headers: {
-					'file-type': file.type,
+					'Content-Type': file.type,
 					'file-extension': getFileExtension(file.name)
 				},
 				onUploadProgress: (progressEvent: ProgressEvent) => {

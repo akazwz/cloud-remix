@@ -6,8 +6,9 @@ export const action: ActionFunction = async({ request, params }) => {
 	const data = await request.arrayBuffer()
 
 	const ext = request.headers.get('file-extension')
-
 	const key = await generateKey(ext)
+
+	const hash = await HashArrayBuffer(data)
 
 	if (!data) {
 		return json(
@@ -20,12 +21,23 @@ export const action: ActionFunction = async({ request, params }) => {
 
 	switch (request.method) {
 		case 'PUT':
-			await MY_BUCKET.put(key, data)
+			const object = await MY_BUCKET.put(key, data, {
+				httpMetadata: request.headers,
+			})
+			if (!object) {
+				return json(
+					{ msg: 'put failed' },
+					{ status: 400 }
+				)
+			}
+
 			return json(
 				{
 					msg: 'put success',
 					key,
 					url,
+					hash,
+					etag: object.etag
 				},
 				{ status: 201 },
 			)
@@ -46,4 +58,10 @@ const generateKey = async(ext: string | null): Promise<string> => {
 	const object = await MY_BUCKET.get(key)
 	if (!object) return key
 	return await generateKey(ext)
+}
+
+const HashArrayBuffer = async(data: ArrayBuffer) => {
+	const hashBuffer = await crypto.subtle.digest({ name: 'SHA-256' }, data)
+	const hashArray = Array.from(new Uint8Array(hashBuffer))
+	return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('')
 }
