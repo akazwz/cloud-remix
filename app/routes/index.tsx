@@ -16,7 +16,7 @@ import {
 	useClipboard,
 } from '@chakra-ui/react'
 import { Copy, Correct, FileAdditionOne, UploadOne } from '@icon-park/react'
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 
 import { ColorModeToggle } from '~/components/ColorModeToggle'
 import { ellipsisTextStartAndEnd, filesizeUnit } from '~/src/utils'
@@ -75,9 +75,7 @@ const Index = () => {
 		}
 
 		const form = new FormData()
-		form.append('info', 'this is file')
 		form.append('file', file)
-
 		const res = await axios.put(`/cloud`,
 			form,
 			{
