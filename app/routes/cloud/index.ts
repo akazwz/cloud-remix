@@ -1,69 +1,58 @@
 import type { ActionFunction, } from '@remix-run/cloudflare'
 import { json } from '@remix-run/cloudflare'
-import { nanoid } from 'nanoid/non-secure'
 
+import { generateKey, getExtension, hashArrayBuffer } from '~/src/utils'
+
+// put post delete option
 export const action: ActionFunction = async({ request, params }) => {
-	const data = await request.arrayBuffer()
-
-	const ext = request.headers.get('file-extension')
-	const key = await generateKey(ext)
-
-	const hash = await HashArrayBuffer(data)
-
-	if (!data) {
-		return json(
-			{ msg: 'no data' },
-			{ status: 400 }
-		)
-	}
-
-	const url = request.url + '/' + key
-
 	switch (request.method) {
 		case 'PUT':
-			const object = await MY_BUCKET.put(key, data, {
-				httpMetadata: {
-					contentType: request.headers.get('Content-Type') || undefined,
-				},
-			})
-			if (!object) {
-				return json(
-					{ msg: 'put failed' },
-					{ status: 400 }
-				)
-			}
-
-			return json(
-				{
-					msg: 'put success',
-					key,
-					url,
-					hash,
-					etag: object.etag
-				},
-				{ status: 201 },
-			)
+		case 'POST':
+			return await putObject(request)
 		default:
 			return json(
-				{ msg: 'Method Not Allowed' },
+				{ msg: 'method not allowed' },
 				{ status: 405 }
 			)
 	}
 }
 
-// 生成 key
-const generateKey = async(ext: string | null): Promise<string> => {
-	let key = nanoid(7)
-	if (ext) {
-		key = key + '.' + ext
+// put object
+const putObject = async(request: Request) => {
+	// get form data
+	const data = await request.formData()
+	const file = data.get('file')
+	if (!file || typeof file === 'string') {
+		return json(
+			{ msg: 'no file' },
+			{ status: 400 }
+		)
 	}
-	const object = await MY_BUCKET.get(key)
-	if (!object) return key
-	return await generateKey(ext)
-}
+	// get file extension by filename
+	const ext = getExtension(file.name)
+	// generate object key by extension
+	const key = await generateKey(ext)
+	// get file hash
+	const hash = await hashArrayBuffer(await file.arrayBuffer())
 
-const HashArrayBuffer = async(data: ArrayBuffer) => {
-	const hashBuffer = await crypto.subtle.digest({ name: 'SHA-256' }, data)
-	const hashArray = Array.from(new Uint8Array(hashBuffer))
-	return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('')
+	await NAME_SPACE.put(key, hash)
+
+	// find object by hash
+	const object = await MY_BUCKET.get(hash)
+	// no hash object then put
+	if (!object) {
+		await MY_BUCKET.put(hash, file, {
+			httpMetadata: {
+				contentType: file.type,
+			},
+		})
+	}
+
+	const url = `${request.url}/${key}`
+	return json(
+		{
+			url,
+		},
+		{ status: 201, },
+	)
 }

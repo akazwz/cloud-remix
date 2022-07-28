@@ -4,8 +4,5 @@ export {}
 
 declare global{
 	const MY_BUCKET: R2Bucket
-
-	interface Crypto{
-		digestStream: DigestStream
-	}
+	const NAME_SPACE: KVNamespace
 }

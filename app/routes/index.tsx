@@ -16,10 +16,10 @@ import {
 	useClipboard,
 } from '@chakra-ui/react'
 import { Copy, Correct, FileAdditionOne, UploadOne } from '@icon-park/react'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 import { ColorModeToggle } from '~/components/ColorModeToggle'
-import { ellipsisTextStartAndEnd, filesizeUnit, getFileExtension } from '~/src/utils'
+import { ellipsisTextStartAndEnd, filesizeUnit } from '~/src/utils'
 
 const Index = () => {
 	const inputRef = useRef<HTMLInputElement>(null)
@@ -62,10 +62,11 @@ const Index = () => {
 		setProgress(0)
 		setFilename(file.name)
 		setFilesize(file.size)
+		setUrl('')
 		// 限制文件大小 1 GB
-		if (file.size > 1024 * 1024 * 1024) {
+		if (file.size > 100 * 1024 * 1024) {
 			toast({
-				title: 'Max File Size is 1GB',
+				title: 'Max File Size is 100MB',
 				status: 'error',
 				duration: 3000,
 				isClosable: true,
@@ -73,13 +74,13 @@ const Index = () => {
 			return
 		}
 
+		const form = new FormData()
+		form.append('info', 'this is file')
+		form.append('file', file)
+
 		const res = await axios.put(`/cloud`,
-			await file.arrayBuffer(),
+			form,
 			{
-				headers: {
-					'Content-Type': file.type,
-					'file-extension': getFileExtension(file.name)
-				},
 				onUploadProgress: (progressEvent: ProgressEvent) => {
 					const p = (progressEvent.loaded / progressEvent.total) * 100
 					setProgress(p)

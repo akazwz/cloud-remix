@@ -1,6 +1,32 @@
-export const getFileExtension = (filename: string): string => {
-	const extIndex = filename.lastIndexOf('.')
-	return filename.slice(extIndex + 1, filename.length)
+import { nanoid } from 'nanoid/non-secure'
+
+export const getExtension = (filename: string): string => {
+	const pos  = filename.lastIndexOf('.')
+	if (pos === -1) {
+		return ''
+	}
+	const adjustedPos = pos + '.'.length
+	if (adjustedPos > filename.length) {
+		return  ''
+	}
+	return filename.slice(adjustedPos)
+}
+
+// 生成 key
+export const generateKey = async(ext: string): Promise<string> => {
+	let key = nanoid(7)
+	if (ext) {
+		key = key + '.' + ext
+	}
+	const object = await MY_BUCKET.get(key)
+	if (!object) return key
+	return await generateKey(ext)
+}
+
+export const hashArrayBuffer = async(data: ArrayBuffer) => {
+	const hashBuffer = await crypto.subtle.digest({ name: 'SHA-256' }, data)
+	const hashArray = Array.from(new Uint8Array(hashBuffer))
+	return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('')
 }
 
 export const ellipsisText = (text: string, length: number, ellipsis: string = '...'): string => {

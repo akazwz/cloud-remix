@@ -6,6 +6,10 @@ main = "./build/index.js"
 # https://developers.cloudflare.com/workers/platform/compatibility-dates
 compatibility_date = "2022-04-05"
 
+kv_namespaces = [
+    { binding = "NAME_SPACE", id = "262129b2985943dda81c077cd40ef415" }
+]
+
 [site]
 bucket = "./public"
 
@@ -15,3 +19,4 @@ command = "yarn build"
 [[r2_buckets]]
 binding = 'MY_BUCKET' # <~ valid JavaScript variable name
 bucket_name = 'default-bucket'
+

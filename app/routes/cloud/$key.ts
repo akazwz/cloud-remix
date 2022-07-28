@@ -1,13 +1,32 @@
 import type { LoaderFunction } from '@remix-run/cloudflare'
+import { json } from '@remix-run/cloudflare'
 
 // get object by key
 // 通过 key 获取 对象
 export const loader: LoaderFunction = async({ params }) => {
 	const { key } = params
-	if (!key) return new Response('Object Not Found')
+	if (!key) {
+		return json(
+			{ msg: 'no key' },
+			{ status: 400 },
+		)
+	}
 
-	const object = await MY_BUCKET.get(key)
-	if (!object) return new Response('Object Not Found')
+	const hashRealKey = await NAME_SPACE.get(key)
+	if (!hashRealKey) {
+		return json(
+			{ msg: 'key no found' },
+			{ status: 404 },
+		)
+	}
+
+	const object = await MY_BUCKET.get(hashRealKey)
+	if (!object) {
+		return json(
+			{ msg: 'object no found' },
+			{ status: 404 },
+		)
+	}
 
 	const headers = new Headers()
 	object.writeHttpMetadata(headers)

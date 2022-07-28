@@ -87,7 +87,7 @@ const getAlgoInstance = (algo: Algo): Hasher => {
 	}
 }
 
-export const HashFile = async(file: Blob, algo: Algo, chunkSize: number = 1024 * 1024 * 10): Promise<string> => {
+export const hashFile = async(file: Blob, algo: Algo, chunkSize: number = 1024 * 1024 * 10): Promise<string> => {
 	const algoInstance = getAlgoInstance(algo)
 	return await hashFileInternal(file, algoInstance, chunkSize)
 }
