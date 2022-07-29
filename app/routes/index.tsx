@@ -19,7 +19,7 @@ import { Copy, Correct, FileAdditionOne, UploadOne } from '@icon-park/react'
 import axios from 'axios'
 
 import { ColorModeToggle } from '~/components/ColorModeToggle'
-import { ellipsisTextStartAndEnd, filesizeUnit } from '~/src/utils'
+import { ellipsisTextStartAndEnd, filesizeUnit, getExtension } from '~/src/utils'
 
 const Index = () => {
 	const inputRef = useRef<HTMLInputElement>(null)
@@ -63,8 +63,8 @@ const Index = () => {
 		setFilename(file.name)
 		setFilesize(file.size)
 		setUrl('')
-		// 限制文件大小 1 GB
-		if (file.size > 100 * 1024 * 1024) {
+		// 限制文件大小 100MB
+		if (file.size > 10 * 1024 * 1024) {
 			toast({
 				title: 'Max File Size is 100MB',
 				status: 'error',
@@ -74,11 +74,12 @@ const Index = () => {
 			return
 		}
 
-		const form = new FormData()
-		form.append('file', file)
 		const res = await axios.put(`/cloud`,
-			form,
+			await file.arrayBuffer(),
 			{
+				headers: {
+					'file-extension': getExtension(file.name)
+				},
 				onUploadProgress: (progressEvent: ProgressEvent) => {
 					const p = (progressEvent.loaded / progressEvent.total) * 100
 					setProgress(p)

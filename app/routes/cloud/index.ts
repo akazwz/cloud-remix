@@ -1,10 +1,10 @@
 import type { ActionFunction, } from '@remix-run/cloudflare'
 import { json } from '@remix-run/cloudflare'
 
-import { generateKey, getExtension, hashArrayBuffer } from '~/src/utils'
+import { generateKey, hashArrayBuffer } from '~/src/utils'
 
 // put post delete option
-export const action: ActionFunction = async({ request, params }) => {
+export const action: ActionFunction = async({ request }) => {
 	switch (request.method) {
 		case 'PUT':
 		case 'POST':
@@ -20,21 +20,15 @@ export const action: ActionFunction = async({ request, params }) => {
 // put object
 const putObject = async(request: Request) => {
 	try {
-		// get form data
-		const data = await request.formData()
-		const file = data.get('file')
-		if (!file || typeof file === 'string') {
-			return json(
-				{ msg: 'no file' },
-				{ status: 400 }
-			)
-		}
-		// get file extension by filename
-		const ext = getExtension(file.name)
+		// get data
+		const data = await request.arrayBuffer()
+
+		// get file extension
+		const ext = request.headers.get('file-extension')
 		// generate object key by extension
-		const key = await generateKey(ext)
+		const key = await generateKey()
 		// get file hash
-		const hash = await hashArrayBuffer(await file.arrayBuffer())
+		const hash = await hashArrayBuffer(data)
 
 		await NAME_SPACE.put(key, hash)
 
@@ -42,14 +36,10 @@ const putObject = async(request: Request) => {
 		const object = await MY_BUCKET.get(hash)
 		// no hash object then put
 		if (!object) {
-			await MY_BUCKET.put(hash, file, {
-				httpMetadata: {
-					contentType: file.type,
-				},
-			})
+			await MY_BUCKET.put(hash, data)
 		}
 
-		const url = `${request.url}/${key}`
+		const url = ext ? `${request.url}/${key}.${ext}` : `${request.url}/${key}`
 		return json(
 			{
 				url,

@@ -1,19 +1,19 @@
 import { nanoid } from 'nanoid/non-secure'
 
 export const getExtension = (filename: string): string => {
-	const pos  = filename.lastIndexOf('.')
+	const pos = filename.lastIndexOf('.')
 	if (pos === -1) {
 		return ''
 	}
 	const adjustedPos = pos + '.'.length
 	if (adjustedPos > filename.length) {
-		return  ''
+		return ''
 	}
 	return filename.slice(adjustedPos)
 }
 
 // 生成 key
-export const generateKey = async(ext: string): Promise<string> => {
+export const generateKey = async(ext: string | undefined = undefined): Promise<string> => {
 	let key = nanoid(7)
 	if (ext) {
 		key = key + '.' + ext

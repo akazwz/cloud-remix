@@ -21,14 +21,11 @@
     "@remix-run/react": "^1.6.5",
     "axios": "^0.27.2",
     "cross-env": "^7.0.3",
-    "crypto-js": "^4.1.1",
-    "file-type": "^17.1.4",
     "framer-motion": "^6",
+    "mime-types": "^2.1.35",
     "nanoid": "^3.3.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "strtok3": "^7.0.0-alpha.9",
-    "token-types": "^4.2.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.14.1",
@@ -36,6 +33,7 @@
     "@remix-run/dev": "^1.6.5",
     "@remix-run/eslint-config": "^1.6.5",
     "@types/crypto-js": "^4.1.1",
+    "@types/mime-types": "^2.1.1",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "eslint": "^8.20.0",
