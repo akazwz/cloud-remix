@@ -64,7 +64,7 @@ const Index = () => {
 		setFilesize(file.size)
 		setUrl('')
 		// 限制文件大小 100MB
-		if (file.size > 10 * 1024 * 1024) {
+		if (file.size > 100 * 1024 * 1024) {
 			toast({
 				title: 'Max File Size is 100MB',
 				status: 'error',
