@@ -23,7 +23,11 @@ export const loader: LoaderFunction = async({ request, params }) => {
 		mimeType = mime.lookup(key) || 'application/octet-stream'
 	}
 
-	const object = await MY_BUCKET.get(key)
+	const pos = key.lastIndexOf('.')
+	// real store in kv key
+	const realKey = pos === -1 ? key : key.slice(0, pos)
+
+	const object = await MY_BUCKET.get(realKey)
 	if (!object) {
 		return json(
 			{ msg: 'object no found' },
