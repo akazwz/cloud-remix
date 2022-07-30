@@ -2064,25 +2064,25 @@
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
 
 "@remix-run/cloudflare-workers@^1.6.5":
-  version "1.6.5"
-  resolved "https://registry.npmmirror.com/@remix-run/cloudflare-workers/-/cloudflare-workers-1.6.5.tgz#56bd0db85827db0b8288c0a98b82684823a81638"
-  integrity sha512-cjmlM2RW4mPYmb/XT3EbV6pAHB23A0TI/bhMs8yRY4vbauNglX+f5tgyAOXrnconRtAvBTdwAJ5UT8IUDkiOhg==
+  version "1.6.6"
+  resolved "https://registry.npmmirror.com/@remix-run/cloudflare-workers/-/cloudflare-workers-1.6.6.tgz#fc4df3a597af69a83a8363af9e6b6d36a2ab65ed"
+  integrity sha512-CVONUA3rEQbhaWMnofjfVIbg/3tMe71xqtmCAlR05gwYPayNRukjGXeWshsSeWq7ZzDH5QDIsoNAGDiY3Nqz5w==
   dependencies:
     "@cloudflare/kv-asset-handler" "^0.1.3"
-    "@remix-run/cloudflare" "1.6.5"
+    "@remix-run/cloudflare" "1.6.6"
 
-"@remix-run/cloudflare@1.6.5", "@remix-run/cloudflare@^1.6.5":
-  version "1.6.5"
-  resolved "https://registry.npmmirror.com/@remix-run/cloudflare/-/cloudflare-1.6.5.tgz#6987de32a962456008a0f18131041a5be448fcfe"
-  integrity sha512-lcHxhTez4QwQ8cqBc+0PAj9gcuVruByHxHxoIig6qAcYs9sip6mbjvEt7Mckecg5q7q9s7GpmnKQOjxX2Vkjjw==
+"@remix-run/cloudflare@1.6.6", "@remix-run/cloudflare@^1.6.5":
+  version "1.6.6"
+  resolved "https://registry.npmmirror.com/@remix-run/cloudflare/-/cloudflare-1.6.6.tgz#a3f39a02a513cdfc2fb6ecbd771ce996a7f8e057"
+  integrity sha512-lKLQ2sZUw5npzL76c4Rvwc7c+DZZ5wq+soEsX9umjXEXU+Htdf61t7zWHAqQymFLxSd6DcUP7SDh5Chcb3yrew==
   dependencies:
     "@cloudflare/kv-asset-handler" "^0.1.3"
-    "@remix-run/server-runtime" "1.6.5"
+    "@remix-run/server-runtime" "1.6.6"
 
 "@remix-run/dev@^1.6.5":
-  version "1.6.5"
-  resolved "https://registry.npmmirror.com/@remix-run/dev/-/dev-1.6.5.tgz#dfa4e58288f79ed7616b63698ee8ad4cf6b8fe60"
-  integrity sha512-DxDrtWKuv/sSXegtaVWZ4RbDK0dsw7wDUchJ8yJ/WHFgdTl5V4XK9gg2mAbH5v4K5XFmeZedOJnvLKgwigJO2Q==
+  version "1.6.6"
+  resolved "https://registry.npmmirror.com/@remix-run/dev/-/dev-1.6.6.tgz#85b97450dc9bccbc70e2721825f4280162e8366a"
+  integrity sha512-28JJ0EQTZaQyNNOV9HCiES0bqMKO83c6zsja6PFbYQtUbtdJ6yb1LUqhjndI+sv5ORhG/qfnjMybfr59YRLlVw==
   dependencies:
     "@babel/core" "^7.18.6"
     "@babel/plugin-syntax-jsx" "^7.18.6"
@@ -2090,7 +2090,7 @@
     "@babel/preset-typescript" "^7.18.6"
     "@esbuild-plugins/node-modules-polyfill" "^0.1.4"
     "@npmcli/package-json" "^2.0.0"
-    "@remix-run/server-runtime" "1.6.5"
+    "@remix-run/server-runtime" "1.6.6"
     "@yarnpkg/esbuild-plugin-pnp" "3.0.0-rc.11"
     arg "^5.0.1"
     cacache "^15.0.5"
@@ -2125,9 +2125,9 @@
     xdm "^2.0.0"
 
 "@remix-run/eslint-config@^1.6.5":
-  version "1.6.5"
-  resolved "https://registry.npmmirror.com/@remix-run/eslint-config/-/eslint-config-1.6.5.tgz#3cd0bf7421e2fb207a2b5cd35eb8ad3b8ebd7804"
-  integrity sha512-l1HQUcbF+RvN3CK7haf1FgHIIoM8l13/RyHsTsjjQA6jv4/e0xMykfzfwRsrJL49O8cyZ6H09lRvvG5beR6Owg==
+  version "1.6.6"
+  resolved "https://registry.npmmirror.com/@remix-run/eslint-config/-/eslint-config-1.6.6.tgz#defb303361e1e39f27579b2e5e5309d0006cfd4c"
+  integrity sha512-IlCTG6CIxx4Lc6g3YYlj2CaxTKu7bEvcuv8K1o9OhOuinYu/OkNzUjcDdCwzOUDWDUNqcXbeWBZ/J2iz7m/QHw==
   dependencies:
     "@babel/core" "^7.18.6"
     "@babel/eslint-parser" "^7.18.2"
@@ -2147,17 +2147,18 @@
     eslint-plugin-testing-library "^5.0.5"
 
 "@remix-run/react@^1.6.5":
-  version "1.6.5"
-  resolved "https://registry.npmmirror.com/@remix-run/react/-/react-1.6.5.tgz#0d786438318186dac1fe129a9f93cd2e943e702b"
-  integrity sha512-jpL83GOiLRH1fKsGyzLYKDlwxeR3Ofa+Whu4qtSeaWKyXBREN5sAYN0yee/PIgREqJYiaKygdjrjw8psjE2ShQ==
+  version "1.6.6"
+  resolved "https://registry.npmmirror.com/@remix-run/react/-/react-1.6.6.tgz#cdd308a563df359fb2521c4f57b1ced04edc4b33"
+  integrity sha512-yuxBiwrqIU4sd+zYQIULRfDuUZVAJ0Q7D7XiSm5sQKpXd+a87aNZFYcSrFLgIkQdBSzmdz+SweUTlhwSVxZdSQ==
   dependencies:
     history "^5.3.0"
     react-router-dom "^6.2.2"
+    type-fest "^2.17.0"
 
-"@remix-run/server-runtime@1.6.5":
-  version "1.6.5"
-  resolved "https://registry.npmmirror.com/@remix-run/server-runtime/-/server-runtime-1.6.5.tgz#f02ba219704ba0139b2db644640c24c6db74d753"
-  integrity sha512-4QJeIWFWcXZbSPaXUR3V0XzsF0TALuuoQJGEPhtaRP/oX/relE8T36hCmsBDwe0gQM6nyanU2q8vG8BoOQqulQ==
+"@remix-run/server-runtime@1.6.6":
+  version "1.6.6"
+  resolved "https://registry.npmmirror.com/@remix-run/server-runtime/-/server-runtime-1.6.6.tgz#b1b45f7fe2562523180ece0842fe6c0d0cbae27b"
+  integrity sha512-OIloKd1tPwFxJAq7okqAhJE3f2PTP4cjVh64NbkPLgcC4BjpPjSK+Ddgw8jJlyJnhD1KmaLZ9wiOVurzwOD7Dg==
   dependencies:
     "@types/cookie" "^0.4.0"
     "@web3-storage/multipart-parser" "^1.0.0"
@@ -7670,6 +7671,11 @@ type-fest@^0.21.3:
   version "0.21.3"
   resolved "https://registry.npmmirror.com/type-fest/-/type-fest-0.21.3.tgz#d260a24b0198436e133fa26a524a6d65fa3b2e37"
   integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
+
+type-fest@^2.17.0:
+  version "2.17.0"
+  resolved "https://registry.npmmirror.com/type-fest/-/type-fest-2.17.0.tgz#c677030ce61e5be0c90c077d52571eb73c506ea9"
+  integrity sha512-U+g3/JVXnOki1kLSc+xZGPRll3Ah9u2VIG6Sn9iH9YX6UkPERmt6O/0fIyTgsd2/whV0+gAaHAg8fz6sG1QzMA==
 
 type-is@~1.6.18:
   version "1.6.18"
